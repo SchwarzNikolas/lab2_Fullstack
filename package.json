@@ -1,0 +1,23 @@
+{
+  "name": "lab2",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/SchwarzNikolas/lab2_Fullstack#readme",
+  "bugs": {
+    "url": "https://github.com/SchwarzNikolas/lab2_Fullstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SchwarzNikolas/lab2_Fullstack.git"
+  },
+  "license": "MIT",
+  "author": "Schwarz Nikolas",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "create-vite": "^6.4.0"
+  }
+}
