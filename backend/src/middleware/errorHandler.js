@@ -27,6 +27,32 @@ errorHandler.missingEmployeeBody = (req, res, next) => {
 }
 
 /**
+ * Handles errors when the required project fields are missing in the request body.
+ *
+ * @param {object} req - The Express request object.
+ * @param {object} res - The Express response object.
+ * @param {Function} next - The next middleware function.
+ */
+errorHandler.missingProjectBody = (req, res, next) => {
+        const err = new Error("Missing body part, make sure to include following fields: project_code, project_name and project_description");
+        err.status = 400; // Set the status code for a 400 Bad Request error
+        next(err); // Pass the error to the global error handler
+}
+
+/**
+ * Handles errors when attempting to create a project with a code that already exists.
+ *
+ * @param {object} req - The Express request object.
+ * @param {object} res - The Express response object.
+ * @param {Function} next - The next middleware function.
+ */
+errorHandler.duplicateProject = (req, res, next) => {
+        const err = new Error("Project with this code already exists.");
+        err.status = 409; // Set the status code for a 409 Conflict error
+        next(err); // Pass the error to the global error handler
+}
+
+/**
  * A generic error handler for all other errors.
  *
  * @param {object} err - The error object passed by previous middleware.

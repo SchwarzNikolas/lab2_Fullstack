@@ -1,7 +1,7 @@
 import express from "express";
 import EmployeeController from "../controller/EmployeeController.js";
 
-// Initialize the Express router to define routes for dish-related API operations
+// Initialize the Express router to define routes for employee-related API operations
 export const router = express.Router();
 
 /**
