@@ -40,6 +40,33 @@ errorHandler.missingProjectBody = (req, res, next) => {
 }
 
 /**
+ * Handles errors when required fields are missing in the project assignment request body.
+ *
+ * @param {object} req - The Express request object.
+ * @param {object} res - The Express response object.
+ * @param {Function} next - The next middleware function.
+ */
+errorHandler.missingProjectAssignmentBody = (req, res, next) => {
+        const err = new Error("Missing body part, make sure to include the following fields: employee_id, project_code and start_date");
+        err.status = 400; // Set the status code for a 400 Bad Request error
+        next(err); // Pass the error to the global error handler
+}
+
+
+/**
+ * Handles errors when the request body contains valid fields that reference non-existent resources.
+ *
+ * @param {object} req - The Express request object.
+ * @param {object} res - The Express response object.
+ * @param {Function} next - The next middleware function.
+ */
+errorHandler.wrongProjectAssignmentBody = (req, res, next) => {
+        const err = new Error("One of the body parts is referencing a non-existent object");
+        err.status = 422; // Set the status code for a 422 Unprocessable Entity error
+        next(err); // Pass the error to the global error handler
+}
+
+/**
  * Handles errors when attempting to create a project with a code that already exists.
  *
  * @param {object} req - The Express request object.
