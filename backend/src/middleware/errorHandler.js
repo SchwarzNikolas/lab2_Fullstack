@@ -14,6 +14,19 @@ errorHandler.notFound = (req, res, next) => {
 }
 
 /**
+ * Handles errors when the required employee fields are missing in the request body.
+ *
+ * @param {object} req - The Express request object.
+ * @param {object} res - The Express response object.
+ * @param {Function} next - The next middleware function.
+ */
+errorHandler.missingEmployeeBody = (req, res, next) => {
+        const err = new Error("Missing body part, make sure to include following fields: full_name, email and password");
+        err.status = 400; // Set the status code for a 400 Bad Request error
+        next(err); // Pass the error to the global error handler
+}
+
+/**
  * A generic error handler for all other errors.
  *
  * @param {object} err - The error object passed by previous middleware.

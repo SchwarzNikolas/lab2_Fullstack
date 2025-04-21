@@ -1,5 +1,5 @@
 import express from "express";
-import { router } from "./route/ROUTE.js";
+import { router } from "./route/index.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 
 // Initialize the Express application
@@ -8,8 +8,8 @@ export const app = express();
 // Middleware to parse incoming JSON request bodies
 app.use(express.json());
 
-// Use the dish API router for all routes starting from the root
-// app.use("/", router);
+// Use the API router for all routes starting from the root
+app.use("/", router);
 
 /**
  * Middleware to handle 404 errors when no matching route is found.
