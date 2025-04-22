@@ -1,12 +1,22 @@
+import cors from "cors";
+import dotenv from "dotenv";
 import express from "express";
 import { router } from "./route/index.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+
+dotenv.config("../.env");
 
 // Initialize the Express application
 export const app = express();
 
 // Middleware to parse incoming JSON request bodies
 app.use(express.json());
+
+// enable cors
+app.use(cors({
+        origin: `http://localhost:${process.env.FRONTENDPORT}`,
+        credentials: true
+}))
 
 // Use the API router for all routes starting from the root
 app.use("/", router);
