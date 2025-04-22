@@ -1,42 +1,77 @@
-#root {
-  max-width: 1280px;
+/* Dark Theme Styles for Project Assignments Table */
+
+/* Base Styles */
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Container Styles */
+div {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+}
+
+/* Header Styles */
+h1 {
+  color: #bb86fc;
   text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Table Header Styles */
+th {
+  background-color: #2d2d2d;
+  color: #bb86fc;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Header Hover Effect */
+th:hover {
+  background-color: #3d3d3d;
 }
 
-.card {
-  padding: 2em;
+/* Table Cell Styles */
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #333;
 }
 
-.read-the-docs {
-  color: #888;
+/* Table Row Styles */
+tr {
+  transition: background-color 0.2s ease;
+}
+
+/* Alternate Row Coloring */
+tr:nth-child(even) {
+  background-color: #252525;
+}
+
+/* Row Hover Effect */
+tr:hover {
+  background-color: #333;
+}
+
+/* Remove border from last row */
+tr:last-child td {
+  border-bottom: none;
 }

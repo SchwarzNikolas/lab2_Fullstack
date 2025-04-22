@@ -33,7 +33,7 @@ function App() {
                 // Set up periodic data refresh
                 const interval = setInterval(() => {
                         loadTableData();
-                }, 1000);
+                }, 60000);
 
                 // Clean up interval on component unmount
                 return () => clearInterval(interval);

@@ -2,7 +2,7 @@ import { app } from "./src/express.js";
 import DatabaseService from "./src/service/DatabaseService.js";
 import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
 // Establish a connection to the database before starting the server
 await DatabaseService.connect();
