@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import { useEffect } from 'react';
+
+const connectString = `http://localhost:${import.meta.env.VITE_API_PORT}/api/` 
 
 function App() {
-  const [count, setCount] = useState(0)
+        useEffect(() => {
+                createTable();
+        })
+        return (
+                <>
+                <h1> Hello </h1>
+                </>
+        )
+}
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+async function createTable() {
+        try {
+                const table = await fetchProjectAssignments();
+                table.forEach(async element => {
+                        const employeeName = await getAdditionalInfo(`employees/${element.employee_id}`);
+                        const projectName = await getAdditionalInfo(`projects/${element.project_code}`);
+                        console.log(projectName);
+                        console.log(employeeName);
+                });
+        } catch(error) {
+                console.error(error);
+        }
+}
+
+async function fetchProjectAssignments() {
+        let latestProjectAssignments;
+        try {
+                const data = await fetch(connectString + "project_assignments");
+                let table = await data.json();
+                table.sort((a, b) => Date.parse(b.start_date) - Date.parse(a.start_date));
+                latestProjectAssignments = table.slice(0, 5);
+        } catch(error){
+                console.error(error);
+        }
+        return latestProjectAssignments;
+}
+
+async function getAdditionalInfo(path) {
+        let name;
+        try {
+                const data = await fetch(connectString + path);
+                let [fetchedData] = await data.json();
+                if (path.includes("employees")) {
+                        name = fetchedData.full_name;
+                } else {
+                        name = fetchedData.project_name;
+                }
+        } catch(error) {
+                console.error(error);
+        }
+        return name;
 }
 
 export default App

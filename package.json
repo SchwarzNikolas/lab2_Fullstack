@@ -15,9 +15,12 @@
         "type": "module",
         "main": "index.js",
         "scripts": {
-                "test": "echo \"Error: no test specified\" && exit 1"
+                "dev": "concurrently \"npm run server\" \"npm run client\"",
+                "server": "cd backend && nodemon app.js",
+                "client": "cd frontend && npm run dev"
         },
         "dependencies": {
+                "concurrently": "^9.1.2",
                 "create-vite": "^6.4.0"
         }
 }
