@@ -9,6 +9,9 @@ dotenv.config("../.env");
 // Initialize the Express application
 export const app = express();
 
+// For static files :)
+app.use(express.static("public"));
+
 // Middleware to parse incoming JSON request bodies
 app.use(express.json());
 
