@@ -1,8 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 
-const connectString = import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_PORT && `http://localhost:${import.meta.env.VITE_API_PORT}/api`);
-console.log(connectString)
+const connectString = import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_PORT && `http://localhost:${import.meta.env.VITE_API_PORT}/api/`);
 
 /**
  * Main App component that fetches, displays, and allows sorting of
