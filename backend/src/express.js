@@ -17,7 +17,7 @@ app.use(express.json());
 
 // enable cors
 app.use(cors({
-        origin: `http://localhost:${process.env.FRONTENDPORT}`,
+        origin: `http://localhost:${process.env.PORT}`,
         credentials: true
 }))
 
