@@ -17,7 +17,9 @@ app.use(express.json());
 
 // enable cors
 app.use(cors({
-        origin: `http://localhost:${process.env.FRONTENDPORT}`,
+        origin: [`http://localhost:${process.env.PORT}`,
+                `http://localhost:${process.env.FRONTENDPORT}`,
+                "https://lab2-fullstack-1.onrender.com"],
         credentials: true
 }))
 
